@@ -35,10 +35,18 @@ enum ConversationStatus {
 
 model Candidate {
   id           String @id
-  phoneNumber  String
+  phoneNumber  String @unique
   firstName    String
   lastName     String
   emailAddress String
 
   conversations Conversation[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
 }
