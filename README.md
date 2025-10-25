@@ -47,32 +47,26 @@ Before you begin, ensure you have the following installed on your system:
 
    ```
 
-```
-
 4. Start the PostgreSQL database using Docker:
+
 ```
-
 docker-compose up -d db
-
 ```
 
 5. Run database migrations and generate Prisma client:
+
 ```
-
 yarn prisma:migrate:deploy
-
 ```
 
 6. Start the development server:
+
 ```
-
 yarn dev
-
 ```
 
 The application should now be running at `http://localhost:3000`. You can verify this by accessing the hello world
 endpoint at `http://localhost:3000/api/hello`.
-
 
 ## Available Scripts
 
@@ -88,49 +82,33 @@ endpoint at `http://localhost:3000/api/hello`.
 ## API Endpoints
 
 1. Hello World
-    - **URL:** `/api/hello`
-    - **Method:** GET
-    - **Response:** Returns a simple string
+
+   - **URL:** `/api/hello`
+   - **Method:** GET
+   - **Response:** Returns a simple string
 
 2. Webhook
-    - **URL:** `/api/webhook/receive-application`
-    - **Method:** POST
-    - **Response:** Returns a created conversation
+
+   - **URL:** `/api/webhook/receive-application`
+   - **Method:** POST
+   - **Response:** Returns a created conversation
 
 3. Auth
-    - **URL:** `/api/auth/register`
-    - **Method:** POST
-    - **Response:** Returns a user and a token
 
-    - **URL:** `/api/auth/login`
-    - **Method:** POST
-    - **Response:** Returns a token
+   - **URL:** `/api/auth/register`
+   - **Method:** POST
+   - **Response:** Returns a user and a token
+
+   - **URL:** `/api/auth/login`
+   - **Method:** POST
+   - **Response:** Returns a token
 
 4. Conversation (Protected routes)
-    - **URL:** `/api/conversations`
-    - **Method:** GET
-    - **Response:** Returns conversation, can be filtered by stataus
 
-    - **URL:** `/api/conversations/:id`
-    - **Method:** GET
-    - **Response:** Returns a single conversation
+   - **URL:** `/api/conversations`
+   - **Method:** GET
+   - **Response:** Returns conversation, can be filtered by stataus
 
-
-## Database Schema
-
-The project uses Prisma ORM with a PostgreSQL database. Here's an overview of the main models:
-
-### Conversation
-
-- Fields: `id`, `candidateId`, `jobId`, `status`, `createdAt`, `updatedAt`
-- Status can be: `CREATED`, `ONGOING`, `COMPLETED`
-- Unique constraint on `candidateId` and `jobId` combination
-
-### Candidate
-
-- Fields: `id`, `phoneNumber`, `firstName`, `lastName`, `emailAddress`
-- Has a one-to-many relationship with `Conversation`
-
-For the full schema details, refer to the `prisma/schema.prisma` file in the project.
-
-```
+   - **URL:** `/api/conversations/:id`
+   - **Method:** GET
+   - **Response:** Returns a single conversation
